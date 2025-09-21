@@ -7,6 +7,15 @@
   <link rel="icon" href="resource/favicon.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+
+  <!-- 🔄 Preload de pétalos e imagen sección 3 -->
+  <link rel="preload" href="resource/image/petalos/petalo1.webp" as="image">
+  <link rel="preload" href="resource/image/petalos/petalo2.webp" as="image">
+  <link rel="preload" href="resource/image/petalos/petalo3.webp" as="image">
+  <link rel="preload" href="resource/image/petalos/petalo4.webp" as="image">
+  <link rel="preload" href="resource/image/petalos/petalo5.webp" as="image">
+  <link rel="preload" href="resource/image/seccion3.png" as="image">
 </head>
 <body>
   <audio id="musica" loop>
@@ -14,6 +23,7 @@
     Tu navegador no soporta audio HTML5.
   </audio>
 
+  <!-- ❤️ Pantalla inicial restaurada -->
   <div id="pantalla-inicial">
     <button id="corazon-v3" onclick="activarPagina()" aria-label="Activar música y mostrar contenido">
       <svg viewBox="0 0 32 29.6" xmlns="http://www.w3.org/2000/svg">
@@ -23,6 +33,7 @@
     </button>
   </div>
 
+  <!-- 🌸 Sección 2 con pétalos y poema -->
   <section id="seccion2" style="display: none;">
     <div id="petalos-container"></div>
     <div class="contenido-seccion2">
@@ -33,8 +44,22 @@
     </div>
   </section>
 
+  <!-- 🌻 Sección 3 con imagen a la izquierda y frase a la derecha -->
+  <section id="seccion3" style="display: none;">
+    <div id="petalos-container-seccion3"></div>
+    <div class="contenido-seccion3">
+      <div class="imagen-lateral izquierda">
+        <img src="resource/image/1.png" alt="Imagen de ella" class="imagen-aparecer" />
+      </div>
+      <div class="texto-poema derecha" id="frase-seccion3"></div>
+    </div>
+  </section>
+
+  <!-- 🌌 Sección 4 con fondo nocturno, girasoles y luciérnagas -->
   <main class="contenedor" id="seccion4" style="display: none;">
-    <img src="resource/girasoles.png" alt="Fondo girasoles nocturno" class="fondo-girasoles" />
+    <div id="fondo-nocturno"></div>
+    <div id="luciernagas-container"></div>
+    <div id="campo-girasoles"></div>
     <div id="contenido-seccion4">
       <h1>Feliz 21 de Septiembre Mi Amor 💗</h1>
       <p>
