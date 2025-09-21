@@ -1,26 +1,18 @@
-audio {
-  display: none;
+/* 🔄 Reset base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background: radial-gradient(circle, #822145 0%, #52132a 100%);
-  font-family: 'Segoe UI', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  text-align: center;
-  transition: background 1s ease-in-out;
-  user-select: none;
-  overflow: hidden;
+  font-family: 'Courgette', cursive;
+  background: #fff;
+  overflow-x: hidden;
+  transition: background 1s ease;
 }
 
-body.seccion4-activa {
-  background: #FFFFFF;
-}
-
+/* ❤️ Pantalla inicial restaurada */
 #pantalla-inicial {
   position: fixed;
   top: 0;
@@ -31,7 +23,7 @@ body.seccion4-activa {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 100;
 }
 
 #corazon-v3 {
@@ -97,178 +89,252 @@ body.seccion4-activa {
   }
 }
 
+/* 🌸 Sección 2 */
 #seccion2 {
-  width: 100%;
+  position: relative;
+  width: 100vw;
   height: 100vh;
-  background-color: #F7B8C6;
+  background: linear-gradient(to bottom right, #ffe4e1, #ffb6c1);
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  position: relative;
   opacity: 0;
-  transition: opacity 1.5s ease-in;
+  transition: opacity 1s ease;
+  overflow: hidden;
 }
 
 .contenido-seccion2 {
   display: flex;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
 }
 
 .texto-poema {
-  flex: 1;
-  padding: 40px;
-  font-size: 2em;
+  font-size: 1.8rem;
+  max-width: 500px;
   line-height: 1.6;
+  color: #6b1e3a;
   font-family: 'Satisfy', cursive;
-  font-style: italic;
-  color: #702DC7;
-  text-align: left;
-  max-width: 90%;
-  display: block;
-}
-
-.palabra-poema {
-  display: inline;
-  opacity: 0;
-  animation: aparecer 1.2s ease-out forwards;
-  animation-fill-mode: both;
-  user-select: none;
-}
-
-@keyframes aparecer {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.imagen-lateral {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 100%;
-  overflow: hidden;
 }
 
 .imagen-lateral img {
-  height: 100%;
-  object-fit: cover;
-  border-left: 4px solid #ff69b4;
-  -webkit-mask-image: linear-gradient(to left,
-    rgba(0,0,0,1) 25%,
-    rgba(0,0,0,0.7) 45%,
-    rgba(0,0,0,0.3) 65%,
-    rgba(0,0,0,0.05) 85%,
-    rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(to left,
-    rgba(0,0,0,1) 25%,
-    rgba(0,0,0,0.7) 45%,
-    rgba(0,0,0,0.3) 65%,
-    rgba(0,0,0,0.05) 85%,
-    rgba(0,0,0,0) 100%);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
+  max-width: 300px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  opacity: 0;
+  animation: aparecer 2s forwards;
 }
 
-#petalos-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 1;
+@keyframes aparecer {
+  to { opacity: 1; }
 }
 
-.petalo {
+/* 🌸 Pétalos */
+.petalo-img {
   position: absolute;
-  width: 24px;
-  height: 40px;
-  background: radial-gradient(circle at 30% 30%, #ff4f81, #c2185b);
-  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
-  opacity: 0.85;
-  animation: caer var(--duracion, 8s) linear infinite;
+  width: 40px;
+  animation: caerPetalo var(--duracion) linear forwards;
   transform-origin: center;
-  border-radius: 50% 60% 70% 50% / 100% 100% 0% 0%;
 }
 
-@keyframes caer {
+@keyframes caerPetalo {
   0% {
-    transform: translateY(0) translateX(0) rotate(var(--inicio-rotacion, 0deg));
-    opacity: 0.9;
+    transform: rotate(var(--inicio-rotacion)) translateX(0);
+    top: -60px;
+    opacity: 1;
   }
   100% {
-    transform: translateY(100vh) translateX(var(--desplazamiento-x, -100px)) rotate(var(--fin-rotacion, 360deg));
+    transform: rotate(var(--fin-rotacion)) translateX(var(--desplazamiento-x));
+    top: 100vh;
     opacity: 0;
   }
 }
 
-#seccion4 {
-  display: none;
-  opacity: 1;
-  transition: opacity 2s ease;
-  height: 100vh;
-  width: 100vw;
-  box-sizing: border-box;
+/* 🌻 Sección 3 */
+#seccion3 {
   position: relative;
-  overflow: hidden;
-  z-index: 1;
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom right, #ffe4e1, #ffb6c1);
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  transition: opacity 1s ease;
+  overflow: hidden;
 }
 
-.fondo-girasoles {
-  position: absolute;
-  top: 0;
-  left: 0;
+.contenido-seccion3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+}
+
+.imagen-lateral.izquierda img {
+  max-width: 300px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  opacity: 0;
+  animation: aparecer 2s forwards;
+}
+
+.texto-poema.derecha {
+  font-size: 1.8rem;
+  max-width: 500px;
+  line-height: 1.6;
+  color: #6b1e3a;
+  font-family: 'Satisfy', cursive;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.palabra-poema {
+  opacity: 0;
+  animation: aparecerPalabra 0.6s forwards;
+}
+
+#frase-seccion3 .palabra-poema {
+  opacity: 0;
+  animation: aparecerPalabra 0.6s forwards;
+  margin-right: 6px;
+  white-space: nowrap;
+}
+
+@keyframes aparecerPalabra {
+  to { opacity: 1; }
+}
+
+/* 🕒 Precarga invisible */
+.precarga {
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
+
+/* 🌌 Sección 4 */
+#seccion4 {
+  position: relative;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
-  z-index: 0;
-  pointer-events: none;
+  background: linear-gradient(to bottom right, #0d1b2a, #1b263b);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 2s ease;
+  overflow: hidden;
 }
 
 #contenido-seccion4 {
   position: relative;
-  z-index: 2;
-  max-width: 800px;
+  z-index: 10;
+  text-align: center;
+  color: #fff;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  max-width: 600px;
 }
 
 #contenido-seccion4 h1 {
-  font-size: 3.5em;
-  color: #FFD700;
+  font-size: 2.5rem;
   margin-bottom: 20px;
   font-family: 'Satisfy', cursive;
-  font-weight: normal;
-  text-shadow: 1px 1px 4px rgba(255, 215, 0, 0.4);
-  user-select: none;
-  text-align: center;
 }
 
 #contenido-seccion4 p {
-  font-size: 1.7em;
-  color: #FFD700;
+  font-size: 1.2rem;
   line-height: 1.6;
-  font-style: italic;
-  user-select: none;
-  text-align: center;
+}
+
+/* 🌻 Girasoles */
+.girasol {
+  position: absolute;
+  bottom: 0;
+  transition: opacity 0.6s ease;
+}
+
+.girasol-ajustado {
+  transform: translateY(0);
+}
+
+.girasol-animado {
+  animation: girasolBalanceo 3s infinite ease-in-out;
+}
+
+@keyframes girasolBalanceo {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(3deg); }
+}
+
+/* ✨ Luciérnagas */
+.luciernaga {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #ffffaa 0%, #ffaa00 100%);
+  border-radius: 50%;
+  animation: parpadeo 2s infinite alternate;
+}
+
+@keyframes parpadeo {
+  0% { opacity: 0.2; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* 🌠 Fondo nocturno */
+#fondo-nocturno {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.estrella {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+}
+
+/* 📱 Responsivo */
+@media (max-width: 768px) {
+  .contenido-seccion2,
+  .contenido-seccion3 {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .imagen-lateral img,
+  .imagen-lateral.izquierda img {
+    max-width: 80vw;
+    margin-bottom: 20px;
+  }
+
+  .texto-poema,
+  .texto-poema.derecha {
+    font-size: 1.4rem;
+    max-width: 90vw;
+  }
+
+  #contenido-seccion4 h1 {
+    font-size: 2rem;
+  }
+
+  #contenido-seccion4 p {
+    font-size: 1rem;
+  }
+
+  .girasol {
+    width: auto !important;
+    height: 80px !important;
+  }
 }
